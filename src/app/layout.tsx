@@ -13,7 +13,9 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Montassar Daimi | Senior Frontend Engineer",
   description: "Senior Frontend Engineer specialized in building and scaling complex web applications within the React ecosystem. Expert in Design Systems, Micro-frontends, and Performance Optimization.",
   keywords: ["Frontend Engineer", "React", "Next.js", "TypeScript", "Montassar Daimi", "Web Development", "Portfolio"],
