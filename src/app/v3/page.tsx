@@ -9,6 +9,7 @@ import { EducationAndHobbies } from '@/components/v3/EducationAndHobbies'
 import { Footer } from '@/components/v3/Footer'
 
 import { ThemeSwitcher } from '@/components/ui/ThemeSwitcher'
+import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { Circle, ArrowUp } from "lucide-react"
 
 // Force light mode for V3 to match the design aesthetics (or use ThemeProvider context if preferred)
@@ -87,35 +88,45 @@ export default function PageV3() {
       <Hero />
       
       <div id="experience">
-        <Experience />
+        <ScrollReveal>
+          <Experience />
+        </ScrollReveal>
       </div>
       
       <div id="arsenal">
-        <Services />
+        <ScrollReveal>
+          <Services />
+        </ScrollReveal>
       </div>
       
       <div id="projects">
-        <Projects />
+        <ScrollReveal>
+          <Projects />
+        </ScrollReveal>
       </div>
 
       <div id="education">
-        <EducationAndHobbies />
+        <ScrollReveal>
+          <EducationAndHobbies />
+        </ScrollReveal>
       </div>
 
       {/* CTA Section */}
       <section className="py-24 px-4 md:px-12 bg-background">
-         <div className="max-w-7xl mx-auto relative">
-             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-orange-500/10 blur-3xl rounded-full" />
-             <div className="relative bg-background/40 backdrop-blur-xl border border-border/50 p-12 md:p-20 rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left hover:border-primary/50 transition-colors duration-500">
-                 <div className="space-y-4 max-w-xl">
-                    <h3 className="text-3xl md:text-5xl font-serif font-black text-foreground">Ready to start?</h3>
-                    <p className="text-muted-foreground text-lg">Let&apos;s build something extraordinary together. I&apos;m currently available for new projects.</p>
-                 </div>
-                 <button className="bg-foreground text-background px-10 py-5 rounded-full font-bold uppercase tracking-wider hover:bg-orange-500 hover:text-white transition-all hover:scale-105 shadow-2xl shrink-0">
-                    Get in Touch
-                 </button>
-             </div>
-          </div>
+         <ScrollReveal width="100%">
+          <div className="max-w-7xl mx-auto relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-orange-500/10 blur-3xl rounded-full" />
+              <div className="relative bg-background/40 backdrop-blur-xl border border-border/50 p-12 md:p-20 rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left hover:border-primary/50 transition-colors duration-500">
+                  <div className="space-y-4 max-w-xl">
+                     <h3 className="text-3xl md:text-5xl font-serif font-black text-foreground">Ready to start?</h3>
+                     <p className="text-muted-foreground text-lg">Let&apos;s build something extraordinary together. I&apos;m currently available for new projects.</p>
+                  </div>
+                  <button className="bg-foreground text-background px-10 py-5 rounded-full font-bold uppercase tracking-wider hover:bg-orange-500 hover:text-white transition-all hover:scale-105 shadow-2xl shrink-0">
+                     Get in Touch
+                  </button>
+              </div>
+           </div>
+         </ScrollReveal>
       </section>
       
       <Footer />

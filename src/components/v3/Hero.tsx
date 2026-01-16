@@ -1,21 +1,31 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { portfolioData } from "@/data/portfolio"
 import { ArrowDownRight, Circle, Terminal, Triangle, Mail, Phone, MapPin, Linkedin } from "lucide-react"
 
 export function Hero() {
   const { profile } = portfolioData
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  })
+
+  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const yVisual = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-background text-foreground pt-20 px-4 md:px-12">
+    <section ref={ref} className="min-h-screen relative overflow-hidden bg-background text-foreground pt-20 px-4 md:px-12">
       {/* Dynamic Gradient Background (Top Right) */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-cyan-200 via-purple-200 to-yellow-100 blur-[100px] opacity-60 rounded-full -translate-y-1/2 translate-x-1/4 -z-10 dark:opacity-20" />
+      <motion.div style={{ y: yBackground }} className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-cyan-200 via-purple-200 to-yellow-100 blur-[100px] opacity-60 rounded-full -translate-y-1/2 translate-x-1/4 -z-10 dark:opacity-20" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Column: Typography */}
-        <div className="space-y-8 relative z-10">
+        <motion.div style={{ y: yText }} className="space-y-8 relative z-10">
 
 
           <div className="space-y-2 mt-20">
@@ -86,10 +96,10 @@ export function Hero() {
                 <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Visuals */}
-        <div className="relative h-[600px] flex items-center justify-center">
+        <motion.div style={{ y: yVisual }} className="relative h-[600px] flex items-center justify-center">
            {/* Abstract Shapes */}
            <div className="absolute top-10 left-10 w-8 h-8 border-2 border-primary rounded-full " />
            <div className="absolute bottom-20 right-10 w-12 h-12 bg-primary rounded-full" />
@@ -128,7 +138,7 @@ export function Hero() {
                <span className="font-sans font-medium text-xl text-center leading-tight relative z-10 pt-8 text-primary-foreground">ADHIKA<br/>HIYA!</span>
              </motion.div>
            </motion.div>
-        </div>
+        </motion.div>
 
       </div>
       
