@@ -3,6 +3,7 @@
 import { portfolioData } from "@/data/portfolio"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import { ScrollReveal } from "@/components/ui/ScrollReveal"
 
 export function Projects() {
   const { projects } = portfolioData
@@ -29,12 +30,13 @@ export function Projects() {
 
           <div className="flex justify-center gap-8 overflow-x-auto pb-12 -mx-4 px-4 md:-mx-12 md:px-12 snap-x snap-mandatory scrollbar-hide">
              {projects.map((project, index) => (
+              <ScrollReveal 
+                key={index}
+                direction={index % 2 === 0 ? "left" : "right"} 
+                delay={index * 0.1}
+                width="fit-content"
+              >
                <motion.div 
-                 key={index}
-                 initial={{ opacity: 0, x: 50 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                 viewport={{ once: true }}
                  className="flex-none w-[350px] snap-center group"
                >
                   <div className="flex flex-col gap-4">
@@ -73,6 +75,7 @@ export function Projects() {
                      </div>
                   </div>
                </motion.div>
+               </ScrollReveal>
              ))}
           </div>
 

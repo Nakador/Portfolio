@@ -1,4 +1,5 @@
 import { portfolioData } from "@/data/portfolio"
+import { ScrollReveal } from "@/components/ui/ScrollReveal"
 
 export function Experience() {
   const { experience } = portfolioData
@@ -17,8 +18,12 @@ export function Experience() {
 
         <div className="flex flex-col gap-8">
           {experience.map((exp, index) => (
+            <ScrollReveal 
+              key={index} 
+              direction={index % 2 === 0 ? "left" : "right"} 
+              delay={index * 0.1}
+            >
             <div 
-              key={index}
               className="group relative bg-background/40 backdrop-blur-sm border border-border/50 rounded-3xl p-8 hover:border-primary/50 transition-colors duration-300 shadow-sm hover:shadow-md"
             >
                {/* Hover Gradient */}
@@ -47,6 +52,7 @@ export function Experience() {
                   </div>
                </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
